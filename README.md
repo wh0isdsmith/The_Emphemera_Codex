@@ -518,8 +518,7 @@ You are an experienced software architect helping a developer (using GitHub Copi
 
 **Project File Structure:**
 
-```
-
+```markdown
 ephemera-codex/
 ├── .github/
 │ └── copilot-instructions.md
@@ -558,7 +557,6 @@ ephemera-codex/
 │ ├── constants.js
 │ ├── logger.js
 │ └── timing.js
-
 ```
 
 **Core Functionality Overview (Summary of FRD):**
