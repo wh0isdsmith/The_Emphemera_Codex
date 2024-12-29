@@ -1,0 +1,75 @@
+/* src/styles.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Example of combining Tailwind classes */
+.gregos-error-message {
+  @apply text-red-500;
+}
+
+.glitch {
+  animation: glitch-animation 2s infinite, glitch-text 0.3s steps(2, end) infinite;
+}
+
+@keyframes glitch-animation {
+  0% {
+    transform: skewX(0deg);
+  }
+  10% {
+    transform: skewX(5deg);
+    color: red;
+  }
+  20% {
+    transform: skewX(-5deg);
+    color: blue;
+  }
+  30% {
+    transform: skewX(0deg);
+    color: green;
+  }
+  40% {
+    transform: skewX(10deg);
+  }
+  50% {
+    transform: skewX(-10deg);
+    color: yellow;
+  }
+  60% {
+    transform: skewX(5deg);
+    color: cyan;
+  }
+  70% {
+    transform: skewX(0deg);
+    color: magenta;
+  }
+  80% {
+    transform: skewX(-5deg);
+  }
+  90% {
+    transform: skewX(0deg);
+  }
+  100% {
+    transform: skewX(0deg);
+    color: white;
+  }
+}
+
+@keyframes glitch-text {
+  0% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+  2% {
+    transform: translate(-1px, 1px);
+    text-shadow: 1px 0 0 red;
+  }
+  4%, 100% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+  6% {
+    transform: translate(1px, -1px);
+    text-shadow: -1px 0 0 blue;
+  }
+}
