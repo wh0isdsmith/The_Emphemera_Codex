@@ -515,6 +515,7 @@ You are an experienced software architect helping a developer (using GitHub Copi
 
 **Project Description:**
 "The Ephemera Codex" is a multifaceted project that blends a fictional narrative with technical elements to create an interactive and immersive experience. The story revolves around Greg Reeves, a former musician and skilled programmer, who has suffered immense personal loss and trauma. Greg's emotional and psychological breakdown is represented through a simulated operating system called GregOS, which experiences system failures, memory corruption, and emotional shutdowns. The website serves as a digital artifact, allowing users to explore Greg's story, interact with elements of GregOS and Project Amoratus, and contemplate the ethical implications of his work.
+```
 
 **Project File Structure:**
 
@@ -559,6 +560,7 @@ ephemera-codex/
 │ └── timing.js
 ```
 
+```
 **Core Functionality Overview (Summary of FRD):**
 
 The "Ephemera Codex" website is an interactive experience centered around a fictional character, Greg Reeves, and his complex projects, GregOS and Project Amoratus. The website's core functionality is divided into several key areas:
