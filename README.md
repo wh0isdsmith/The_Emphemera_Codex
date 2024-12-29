@@ -2,59 +2,111 @@
 
 ## Description
 
-The Ephemera Codex is an interactive and immersive website designed to explore the narrative and technical depths of Greg Reeves, GregOS, and Project Amoratus. Built using modern web technologies, it offers users a layered exploration experience combining storytelling with interactive technical elements.
+The Ephemera Codex is an interactive narrative experience exploring the intersection of technology, memory, and trauma through the lens of GregOS and Project Amoratus. This web-based application combines retro terminal aesthetics with modern web technologies to create an immersive story-driven interface.
 
 ## Table of Contents
 
-- Features
-- Installation
-- Usage
-- Project Structure
-- Technical Stack
-- Contributing
-- License
+- [Features](#features)
+- [Technical Requirements](#technical-requirements)
+- [Installation](#installation)
+- [Development](#development)
+- [Project Structure](#project-structure)
+- [Component Architecture](#component-architecture)
+- [Styling Guidelines](#styling-guidelines)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [Documentation](#documentation)
 
 ## Features
 
-- **GregOS Boot Screen:** A simulated boot sequence that sets the immersive tone of the website.
-- **Interactive Narratives:** Fragmented narratives with optional glitch effects and multiple perspectives.
-- **Gamified Elements:** Easter eggs and hidden content to reward exploration.
-- **Dynamic Content Management:** Modular approach for easy addition of new features.
-- **Personalization:** Users can customize visual themes and create emotional profiles.
-- **Ethical and Philosophical Exploration:** Sections dedicated to ethical dilemmas and philosophical threads.
+### Core Features
+
+- **GregOS Boot Interface**
+  - Authentic terminal-style boot sequence
+  - Dynamic error messages and system notifications
+  - Retro ASCII art and animations
+  - Simulated system diagnostics
+
+- **Project Amoratus Interface**
+  - Interactive technical diagrams
+  - QuantumMind neural interface simulation
+  - Technical documentation viewer
+  - Blueprint exploration system
+
+- **Narrative Elements**
+  - Fragmented story delivery system
+  - Multiple perspective viewing options
+  - Dynamic text effects and glitch animations
+  - Memory fragment collection system
+
+### Advanced Features
+
+- **User Experience**
+  - Customizable terminal themes
+  - Persistent user progress tracking
+  - Adaptive difficulty system
+  - Accessibility considerations
+
+- **Technical Integration**
+  - Real-time terminal emulation
+  - Dynamic content loading
+  - State persistence
+  - Cross-component communication
+
+## Technical Requirements
+
+### Environment
+- Node.js 16.x or higher
+- NPM 8.x or higher
+- Modern web browser with ES6+ support
+- Bolt.new development environment
+
+### Core Dependencies
+```json
+{
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0",
+  "tailwindcss": "^3.0.0",
+  "@testing-library/react": "^13.0.0",
+  "jest": "^29.0.0"
+}
+```
 
 ## Installation
 
 1. **Clone the repository:**
-
    ```sh
    git clone [ephemera-codex](README.md)
-   ```
-
-2. **Navigate to the project directory:**
-
-   ```sh
    cd ephemera-codex
    ```
 
-3. **Install dependencies:**
-
+2. **Install dependencies:**
    ```sh
    npm install
    ```
 
-## Usage
+3. **Set up environment:**
+   ```sh
+   cp .env.example .env
+   # Configure your environment variables
+   ```
 
-To run the development server:
+## Development
 
+### Starting the Development Server
 ```sh
 npm start
 ```
 
-Build the project for production:
-
+### Building for Production
 ```sh
 npm run build
+```
+
+### Running Tests
+```sh
+npm test
+npm run test:coverage
 ```
 
 ## Project Structure
@@ -96,91 +148,68 @@ ephemera-codex/
 └── ...
 ```
 
-## Technical Stack
+## Component Architecture
 
-- **Frontend:** React
-- **Styling:** CSS3 with potential use of CSS variables for theming
-- **Backend:** Node.js (if needed for user accounts, annotations, etc.)
-- **Data Storage:** Graph database for managing interconnected content
-- **Visualization Libraries:** D3.js, Three.js for interactive diagrams and visualizations
-- **Audio Integration:** HTML5 audio elements with spatial audio libraries
-- **Development Environment:** Bolt.new
-- **AI Assistants:** Google Gemini for architectural guidance and GitHub Copilot for code assistance
+### Key Components
 
-## Features Breakdown
+- **GregOSBootScreen**
+  - Manages boot sequence simulation
+  - Handles system message display
+  - Controls terminal animations
 
-### GregOS Boot Screen
+- **ProjectAmoratus**
+  - Technical diagram rendering
+  - Interactive documentation
+  - Neural interface simulation
 
-A simulated boot sequence that creates an immersive entry point to the website. Implemented in 
+- **INT3RN4L_3RR0R_ST0RY**
+  - Story fragment management
+  - Glitch effect system
+  - Memory collection interface
 
-GregOSBootScreen.js
+## Styling Guidelines
 
-.
+### CSS Architecture
+- Utilizes Tailwind CSS for utility-first styling
+- BEM methodology for component-specific styles
+- CSS variables for theme management
+- Responsive design principles
 
-### INT3RN4L_3RR0R_ST0RY Interface
-
-Reflects Greg's mental state through fragmented text and glitch effects. Located in 
-
-INT3RN4L_3RR0R_ST0RY
-
-.
-
-### Project Amoratus Blueprints
-
-Interactive diagrams and 3D model viewers showcasing the technical details of Project Amoratus. Found in 
-
-ProjectAmoratus
-
-.
-
-### Ethical Considerations Matrix
-
-Structured overview of ethical dilemmas, linking to relevant narrative and technical content. Implemented in 
-
-EthicalConsiderations
-
-.
-
-## Installation Instructions
-
-1. **Clone the repository:**
-
-   ```sh
-   git clone [ephemera-codex](ephemera-codex)
-   ```
-
-2. **Navigate to the project directory:**
-
-   ```sh
-   cd ephemera-codex
-   ```
-
-3. **Install the dependencies:**
-
-   ```sh
-   npm install
-   ```
-
-## Usage Guidelines
-
-To start the development server, run:
-
-```sh
-npm start
+### Theme Configuration
+```css
+:root {
+  --gregos-primary: #00ff00;
+  --gregos-background: #000000;
+  --gregos-error: #ff0000;
+  --terminal-font: 'VT323', monospace;
+}
 ```
 
-To build the project for production, execute:
+## Testing
 
-```sh
-npm run build
-```
+### Unit Testing
+- React Testing Library for component testing
+- Jest for unit tests
+- Cypress for end-to-end testing
 
-## Additional Resources
+### Test Coverage Goals
+- Components: 85%
+- Utilities: 90%
+- Integration: 75%
 
-- Architectural Notes
-- Functional Requirements
-- Guide
-- File Names Documentation
+## Documentation
+
+### Key Documentation Files
+- [architectural-notes.md](architectural-notes.md) - System architecture details
+- [functional-requirements.md](functional-requirements.md) - Feature specifications
+- [guide.md](guide.md) - Development guidelines
+- [copilot-instructions.md](.github/copilot-instructions.md) - AI assistance setup
+
+### API Documentation
+- Component Props
+- State Management
+- Event Handlers
+- Utility Functions
 
 ---
 
