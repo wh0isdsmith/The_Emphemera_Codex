@@ -1,46 +1,10 @@
 # Node Modules
 node_modules/
 
-# Build and Output Directories
-build/
-dist/
-out/
-
-# IDE and Editor-Specific Files
-.vscode/
-.idea/
-*.swp
-*.swo
-*. অস্থায়ী
-
-# Environment Variables
-.env
-.env.*
-!.env.example
-
-# Logs
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
 
 # OS-Generated Files
 .DS_Store
 Thumbs.db
-
-# Bolt Specific
-.blot-editor
-.blot-workspace
-
-# Tailwind CSS Output (if you're generating a separate CSS file)
-src/styles.css.map
-
-# Dependency directories
-jspm_packages/
-.pnp/
-.pnp.js
 
 # Cache directories
 .cache/
@@ -51,12 +15,3 @@ jspm_packages/
 *.pyo
 *.pyd
 __pycache__/
-
-# Optional: If you're using TypeScript
-*.tsbuildinfo
-
-# Optional: If you're using dotenv-cli
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
