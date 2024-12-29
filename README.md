@@ -24,90 +24,100 @@
 
 The following tools and technologies are central to the development of this project:
 
-*   **Bolt:** A web-based development environment that utilizes a WebContainer to run Node.js directly in the browser. This allows for rapid development and deployment without the need for a local development setup.
-    *   **Limitations:** Bolt's WebContainer has certain constraints, including the inability to run native binaries, no `pip` for Python package management, and limited shell commands.
-*   **Google Gemini:** An advanced AI model that serves as a "Software Architect," providing guidance on project structure, analyzing requirements, suggesting solutions, and helping to understand complex technical concepts.
-*   **GitHub Copilot:** An AI coding assistant integrated into the editor (VS Code in this case) that provides real-time code suggestions, autocompletion, and helps with code generation.
-*   **Frontend Framework:** **React** - Chosen for its component-based architecture, performance, and large community support.
-*   **Styling:** **Tailwind CSS** - A utility-first CSS framework for rapid UI development and consistent styling.
-*   **State Management:** **React Context API with `useReducer`** - For managing moderate state complexity within the application.
+- **Bolt:** A web-based development environment that utilizes a WebContainer to run Node.js directly in the browser. This allows for rapid development and deployment without the need for a local development setup.
+  - **Limitations:** Bolt's WebContainer has certain constraints, including the inability to run native binaries, no `pip` for Python package management, and limited shell commands.
+- **Google Gemini:** An advanced AI model that serves as a "Software Architect," providing guidance on project structure, analyzing requirements, suggesting solutions, and helping to understand complex technical concepts.
+- **GitHub Copilot:** An AI coding assistant integrated into the editor (VS Code in this case) that provides real-time code suggestions, autocompletion, and helps with code generation.
+- **Frontend Framework:** **React** - Chosen for its component-based architecture, performance, and large community support.
+- **Styling:** **Tailwind CSS** - A utility-first CSS framework for rapid UI development and consistent styling.
+- **State Management:** **React Context API with `useReducer`** - For managing moderate state complexity within the application.
 
 ## Development Workflow
 
 The development process for "The Ephemera Codex" follows an iterative approach, leveraging the strengths of Gemini and Copilot:
 
 1. **Conceptualization and Planning:**
-    *   The project's concept, narrative, and technical elements were initially defined.
-    *   A detailed website plan was created, outlining the overall goals, target audience, core concepts, key features, content structure, and technical specifications.
-    *   A `functional-requirements.md` file was created to document the functional requirements.
-    *   An `architectural-notes.md` file was created to document architectural decisions, technology choices, and design patterns.
 
-2. **Setting up the Development Environment with Bolt:**
-    *   Create a new public GitHub repository named `ephemera-codex`.
-    *   Initialize the project using the `vite-react` template on [bolt.new](https://bolt.new).
-        *   Go to `bolt.new`.
-        *   Select the `vite-react` template.
-        *   Once the Bolt environment is set up, you can optionally connect your GitHub repository for version control and deployment. Refer to the Bolt documentation for specific instructions on GitHub integration.
-    *   The initial project structure should be as follows:
+   - The project's concept, narrative, and technical elements were initially defined.
+   - A detailed website plan was created, outlining the overall goals, target audience, core concepts, key features, content structure, and technical specifications.
+   - A `functional-requirements.md` file was created to document the functional requirements.
+   - An `architectural-notes.md` file was created to document architectural decisions, technology choices, and design patterns.
 
+1. **Setting up the Development Environment with Bolt:**
+
+   - Create a new public GitHub repository named `ephemera-codex`.
+
+   - Initialize the project using the `vite-react` template on [bolt.new](https://bolt.new).
+
+     - Go to `bolt.new`.
+     - Select the `vite-react` template.
+     - Once the Bolt environment is set up, you can optionally connect your GitHub repository for version control and deployment. Refer to the Bolt documentation for specific instructions on GitHub integration.
+
+   - The initial project structure should be as follows:
+
+     ```
+     ephemera-codex/
+     ├── public/
+     │   └── index.html
+     ├── src/
+     │   ├── components/
+     │   ├── services/
+     │   └── App.js
+     ├── .gitignore
+     ├── fileNames.md
+     ├── functional-requirements.md
+     ├── architectural-notes.md
+     ├── package.json
+     └── gemini/
+         └── gemini_system_prompt.md
+     ```
+
+   - Populate `fileNames.md` with the initial file and folder structure, including descriptions for each file.
+
+   - Create `functional-requirements.md` based on the detailed website plan.
+
+   - Create `architectural-notes.md` to document key architectural decisions.
+
+1. **Configuring Gemini:**
+
+   - A dedicated chat conversation with Google Gemini was created, titled "Ephemera Codex - Issue Resolution."
+   - A system prompt (`gemini/gemini_system_prompt.md`) was crafted to provide Gemini with the necessary context:
+     - Project description
+     - File structure (`fileNames.md`)
+     - Summary of functional requirements
+     - Architectural notes (`architectural-notes.md`)
+     - Technology stack
+     - Constraints of the Bolt environment
+
+1. **Implementing Features with Copilot:**
+
+   - GitHub Copilot was used within the Bolt editor to assist with code generation and implementation.
+   - Custom instructions were defined in `.github/copilot-instructions.md` to guide Copilot's behavior, providing project-specific context, coding style guidelines, and constraints.
+   - **Example Prompting Workflow:**
+     1. **Identify a feature** to implement (e.g., the "GregOS Boot Screen").
+     1. **Formulate a prompt for Gemini:**
         ```
-        ephemera-codex/
-        ├── public/
-        │   └── index.html
-        ├── src/
-        │   ├── components/
-        │   ├── services/
-        │   └── App.js
-        ├── .gitignore
-        ├── fileNames.md
-        ├── functional-requirements.md
-        ├── architectural-notes.md
-        ├── package.json
-        └── gemini/
-            └── gemini_system_prompt.md
+        **Feature:** Implement the "GregOS Boot Screen" as the initial landing page.
+
+        **Relevant Context (FRD Section):** This relates to the "Entry Point & Navigation" section of the FRD, specifically the "GregOS Boot Screen" feature.
+
+        **My Current Understanding/Initial Thoughts:** I need to create a component that simulates a text-based boot sequence with status messages, potential error codes, and a subtle loading animation. I'm thinking of using a JavaScript-based animation to achieve this.
+
+        **Goal:** I want a fully functional "GregOS Boot Screen" that creates the desired immersive experience as defined in the FRD.
+
+        **Considering I'll be using GitHub Copilot for implementation, can you help me:**
+
+        *   **Suggest the best approach to create the boot sequence animation and error logging?**
+        *   **Identify the specific files I should create or modify (e.g., a new component in `src/components/`)?**
+        *   **Provide any specific code examples or library suggestions (within the constraints of the tech stack) that could be helpful?**
         ```
+     1. **Analyze Gemini's response:** Gemini suggests an approach, identifies relevant files, and might provide code examples.
+     1. **Implement with Copilot:** Create or modify files in the Bolt editor, using comments and natural language prompts to guide Copilot's code suggestions.
+     1. **Iterate and refine:** Test the implementation, debug using the browser's console, and refine the code with further assistance from Gemini and Copilot.
 
-    *   Populate `fileNames.md` with the initial file and folder structure, including descriptions for each file.
-    *   Create `functional-requirements.md` based on the detailed website plan.
-    *   Create `architectural-notes.md` to document key architectural decisions.
+1. **Continuous Integration and Deployment:**
 
-3. **Configuring Gemini:**
-    *   A dedicated chat conversation with Google Gemini was created, titled "Ephemera Codex - Issue Resolution."
-    *   A system prompt (`gemini/gemini_system_prompt.md`) was crafted to provide Gemini with the necessary context:
-        *   Project description
-        *   File structure (`fileNames.md`)
-        *   Summary of functional requirements
-        *   Architectural notes (`architectural-notes.md`)
-        *   Technology stack
-        *   Constraints of the Bolt environment
-
-4. **Implementing Features with Copilot:**
-    *   GitHub Copilot was used within the Bolt editor to assist with code generation and implementation.
-    *   Custom instructions were defined in `.github/copilot-instructions.md` to guide Copilot's behavior, providing project-specific context, coding style guidelines, and constraints.
-    *   **Example Prompting Workflow:**
-        1. **Identify a feature** to implement (e.g., the "GregOS Boot Screen").
-        2. **Formulate a prompt for Gemini:**
-            ```
-            **Feature:** Implement the "GregOS Boot Screen" as the initial landing page.
-
-            **Relevant Context (FRD Section):** This relates to the "Entry Point & Navigation" section of the FRD, specifically the "GregOS Boot Screen" feature.
-
-            **My Current Understanding/Initial Thoughts:** I need to create a component that simulates a text-based boot sequence with status messages, potential error codes, and a subtle loading animation. I'm thinking of using a JavaScript-based animation to achieve this.
-
-            **Goal:** I want a fully functional "GregOS Boot Screen" that creates the desired immersive experience as defined in the FRD.
-
-            **Considering I'll be using GitHub Copilot for implementation, can you help me:**
-
-            *   **Suggest the best approach to create the boot sequence animation and error logging?**
-            *   **Identify the specific files I should create or modify (e.g., a new component in `src/components/`)?**
-            *   **Provide any specific code examples or library suggestions (within the constraints of the tech stack) that could be helpful?**
-            ```
-        3. **Analyze Gemini's response:** Gemini suggests an approach, identifies relevant files, and might provide code examples.
-        4. **Implement with Copilot:** Create or modify files in the Bolt editor, using comments and natural language prompts to guide Copilot's code suggestions.
-        5. **Iterate and refine:** Test the implementation, debug using the browser's console, and refine the code with further assistance from Gemini and Copilot.
-
-5. **Continuous Integration and Deployment:**
-    *   Bolt's built-in features can be used for continuous integration and deployment (if connected to a GitHub repository).
+   - Bolt's built-in features can be used for continuous integration and deployment (if connected to a GitHub repository).
 
 ## File Structure and Key Components
 
@@ -166,29 +176,29 @@ This document outlines the plan for building "The Ephemera Codex" website, a com
 
 #### **Technology Choices:**
 
-*   **Frontend:** React for a component-based, efficient UI.
-*   **State Management:** React Context API with `useReducer` for a simple, built-in solution to manage the website's state.
-*   **Styling:** Tailwind CSS for rapid, utility-first styling and a consistent design system.
-*   **Data Handling:** Minimal data fetching with the `fetch` API, and `localStorage` for storing user preferences. No external database due to Bolt's limitations.
+- **Frontend:** React for a component-based, efficient UI.
+- **State Management:** React Context API with `useReducer` for a simple, built-in solution to manage the website's state.
+- **Styling:** Tailwind CSS for rapid, utility-first styling and a consistent design system.
+- **Data Handling:** Minimal data fetching with the `fetch` API, and `localStorage` for storing user preferences. No external database due to Bolt's limitations.
 
 #### **AI Assistance:**
 
-*   **Google Gemini:** Acts as a "Software Architect," providing high-level guidance, analyzing requirements, and suggesting solutions.
-*   **GitHub Copilot:** Acts as a "Code Assistant," offering code completions and suggestions within the Bolt editor.
+- **Google Gemini:** Acts as a "Software Architect," providing high-level guidance, analyzing requirements, and suggesting solutions.
+- **GitHub Copilot:** Acts as a "Code Assistant," offering code completions and suggestions within the Bolt editor.
 
 #### **Design Principles:**
 
-*   **Modular Design:** Emphasize reusable components and a clear hierarchy.
-*   **Consistent Code Style:** Follow established naming conventions (PascalCase for components, camelCase for variables/functions) and use Prettier for formatting.
-*   **Accessibility:** Adhere to WCAG guidelines, using semantic HTML and ARIA attributes.
-*   **Error Handling:** Implement graceful degradation and informative error messages.
+- **Modular Design:** Emphasize reusable components and a clear hierarchy.
+- **Consistent Code Style:** Follow established naming conventions (PascalCase for components, camelCase for variables/functions) and use Prettier for formatting.
+- **Accessibility:** Adhere to WCAG guidelines, using semantic HTML and ARIA attributes.
+- **Error Handling:** Implement graceful degradation and informative error messages.
 
 #### **Specific Website Features:**
 
-*   **Fragmented Interface:** Reflect the narrative's themes by using conditional rendering, CSS, and animations to create a dynamic and potentially distorted UI.
-*   **Interactive Elements:** Employ event handlers and state updates to engage users.
-*   **"GregOS" Simulation:** Mimic an operating system through visual cues, a simulated file system, and the illusion of code execution.
-*   **Ethical Considerations:** Clearly present ethical concerns related to the project, with user control over sensitive content.
+- **Fragmented Interface:** Reflect the narrative's themes by using conditional rendering, CSS, and animations to create a dynamic and potentially distorted UI.
+- **Interactive Elements:** Employ event handlers and state updates to engage users.
+- **"GregOS" Simulation:** Mimic an operating system through visual cues, a simulated file system, and the illusion of code execution.
+- **Ethical Considerations:** Clearly present ethical concerns related to the project, with user control over sensitive content.
 
 ### `copilot-instructions.md`
 
@@ -196,60 +206,63 @@ This document outlines guidelines for developing "The Ephemera Codex" website, f
 
 #### **Key Project Elements:**
 
-*   **Interactive Story Extension:** The website extends the "The Ephemera Codex" story.
-*   **Fictional OS:** "GregOS" with a retro, terminal-like aesthetic.
-*   **Fictional Technology:** "Project Amoratus" involving advanced concepts like "QuantumMind."
-*   **Themes:** Memory, loss, trauma, and the ethical implications of technology.
+- **Interactive Story Extension:** The website extends the "The Ephemera Codex" story.
+- **Fictional OS:** "GregOS" with a retro, terminal-like aesthetic.
+- **Fictional Technology:** "Project Amoratus" involving advanced concepts like "QuantumMind."
+- **Themes:** Memory, loss, trauma, and the ethical implications of technology.
 
 #### **Coding Standards:**
 
-*   **React:** Functional components with hooks.
-*   **Styling:** Tailwind CSS.
-*   **Naming:** PascalCase for components, camelCase for files, variables, and functions, BEM with Tailwind for CSS.
-*   **Comments:** Explain complex logic.
-*   **Logging:** Use `console.log`, `console.warn`, and `console.error` for simulated system messages in GregOS.
+- **React:** Functional components with hooks.
+- **Styling:** Tailwind CSS.
+- **Naming:** PascalCase for components, camelCase for files, variables, and functions, BEM with Tailwind for CSS.
+- **Comments:** Explain complex logic.
+- **Logging:** Use `console.log`, `console.warn`, and `console.error` for simulated system messages in GregOS.
 
 #### **Development Environment (Bolt.new):**
 
-*   **WebContainer-based:** No server-side rendering.
-*   **No `pip` or external package managers (except npm):** Rely on npm and standard library modules only.
-*   **No native binaries:** No executing external programs.
-*   **No Git:** Version control is unavailable.
+- **WebContainer-based:** No server-side rendering.
+- **No `pip` or external package managers (except npm):** Rely on npm and standard library modules only.
+- **No native binaries:** No executing external programs.
+- **No Git:** Version control is unavailable.
 
 #### **Testing (if applicable):**
 
-*   **React Testing Library and Jest:** Focus on component behavior.
+- **React Testing Library and Jest:** Focus on component behavior.
 
 #### **Code Review (if applicable):**
 
-*   **Accessibility:** Ensure WCAG compliance.
-*   **Style:** Adhere to project conventions.
-*   **Performance:** Optimize animations and dynamic content.
+- **Accessibility:** Ensure WCAG compliance.
+- **Style:** Adhere to project conventions.
+- **Performance:** Optimize animations and dynamic content.
 
 #### **Commit Messages (if applicable):**
 
-*   **Imperative mood:** (e.g., "Fix: ...")
-*   **Concise subject:** Under 50 characters.
-*   **Detailed body:** If needed.
-*   **Reference issues:** (e.g., "Fixes #1")
+- **Imperative mood:** (e.g., "Fix: ...")
+- **Concise subject:** Under 50 characters.
+- **Detailed body:** If needed.
+- **Reference issues:** (e.g., "Fixes #1")
 
 ## Features
 
 ### Core Features
 
 - **GregOS Boot Interface**
+
   - Authentic terminal-style boot sequence
   - Dynamic error messages and system notifications
   - Retro ASCII art and animations
   - Simulated system diagnostics
 
 - **Project Amoratus Interface**
+
   - Interactive technical diagrams
   - QuantumMind neural interface simulation
   - Technical documentation viewer
   - Blueprint exploration system
 
 - **Narrative Elements**
+
   - Fragmented story delivery system
   - Multiple perspective viewing options
   - Dynamic text effects and glitch animations
@@ -258,12 +271,14 @@ This document outlines guidelines for developing "The Ephemera Codex" website, f
 ### Advanced Features
 
 - **User Experience**
+
   - Customizable terminal themes
   - Persistent user progress tracking
   - Adaptive difficulty system
   - Accessibility considerations
 
 - **Technical Integration**
+
   - Real-time terminal emulation
   - Dynamic content loading
   - State persistence
@@ -272,12 +287,14 @@ This document outlines guidelines for developing "The Ephemera Codex" website, f
 ## Technical Requirements
 
 ### Environment
+
 - Node.js 16.x or higher
 - NPM 8.x or higher
 - Modern web browser with ES6+ support
 - Bolt.new development environment
 
 ### Core Dependencies
+
 ```json
 {
   "react": "^18.2.0",
@@ -291,17 +308,20 @@ This document outlines guidelines for developing "The Ephemera Codex" website, f
 ## Installation
 
 1. **Clone the repository:**
+
    ```sh
    git clone [ephemera-codex](README.md)
    cd ephemera-codex
    ```
 
-2. **Install dependencies:**
+1. **Install dependencies:**
+
    ```sh
    npm install
    ```
 
-3. **Set up environment:**
+1. **Set up environment:**
+
    ```sh
    cp .env.example .env
    # Configure your environment variables
@@ -310,16 +330,19 @@ This document outlines guidelines for developing "The Ephemera Codex" website, f
 ## Development
 
 ### Starting the Development Server
+
 ```sh
 npm start
 ```
 
 ### Building for Production
+
 ```sh
 npm run build
 ```
 
 ### Running Tests
+
 ```sh
 npm test
 npm run test:coverage
@@ -369,26 +392,30 @@ ephemera-codex/
 ### Key Components
 
 - **GregOSBootScreen:** Simulates the boot sequence of the fictional GregOS operating system. It's the initial entry point for the user and sets the tone of the experience.
-    - **BootMessage:** Displays individual boot messages with appropriate styling based on message type (normal, warning, error).
-    - **LoadingIndicator:** Shows a loading animation during the boot sequence.
 
-- **ProjectAmoratus:**  Presents information about the fictional "Project Amoratus" technology. This section will likely include interactive diagrams, 3D models (if applicable), and detailed descriptions of components like "QuantumMind."
+  - **BootMessage:** Displays individual boot messages with appropriate styling based on message type (normal, warning, error).
+  - **LoadingIndicator:** Shows a loading animation during the boot sequence.
 
-- **INT3RN4L_3RR0R_ST0RY:**  Handles the presentation of the core narrative, divided into chapters. It might include features like fragmented text display, optional glitch effects, and the ability to track different character perspectives.
-    - **Chapter1:**  An example chapter component, responsible for rendering the content of Chapter 1.
+- **ProjectAmoratus:** Presents information about the fictional "Project Amoratus" technology. This section will likely include interactive diagrams, 3D models (if applicable), and detailed descriptions of components like "QuantumMind."
+
+- **INT3RN4L_3RR0R_ST0RY:** Handles the presentation of the core narrative, divided into chapters. It might include features like fragmented text display, optional glitch effects, and the ability to track different character perspectives.
+
+  - **Chapter1:** An example chapter component, responsible for rendering the content of Chapter 1.
 
 - **Dashboard:** Serves as the main hub after the boot sequence. It provides an overview of the website's content and navigation links to other sections.
 
 - **Navigation:** Manages the main navigation menu, allowing users to switch between different sections of the website.
 
 - **EthicalConsiderations:** Presents a matrix of ethical dilemmas related to the themes of the project, with links to relevant content or external resources.
-    - **EthicalConsiderationsMatrix:** Renders the matrix of ethical dilemmas.
+
+  - **EthicalConsiderationsMatrix:** Renders the matrix of ethical dilemmas.
 
 - **Utils:** Contains utility functions used across the project.
-    - **`bootSequence.js`:**  Defines the boot sequence messages and logic for determining message types.
-    -   **`constants.js`:** Holds constant values used throughout the application.
-    -   **`logger.js`:** Provides logging functionality, potentially used for debugging or simulating system logs.
-    -   **`timing.js`:** Contains utility functions related to timing and delays.
+
+  - **`bootSequence.js`:** Defines the boot sequence messages and logic for determining message types.
+  - **`constants.js`:** Holds constant values used throughout the application.
+  - **`logger.js`:** Provides logging functionality, potentially used for debugging or simulating system logs.
+  - **`timing.js`:** Contains utility functions related to timing and delays.
 
 ## Styling Guidelines
 
@@ -401,7 +428,6 @@ ephemera-codex/
   .navigation-menu__item--active { /* ... */ }
   ```
 - **CSS variables** are used for theme management, allowing for easy customization of colors and potentially supporting features like "GregOS Skin Customization."
-
 
 ### Theme Configuration
 
@@ -442,11 +468,13 @@ ephemera-codex/
 ## Testing
 
 ### Unit Testing
+
 - React Testing Library for component testing
 - Jest for unit tests
 - Cypress for end-to-end testing
 
 ### Test Coverage Goals
+
 - Components: 85%
 - Utilities: 90%
 - Integration: 75%
@@ -454,12 +482,14 @@ ephemera-codex/
 ## Documentation
 
 ### Key Documentation Files
+
 - [architectural-notes.md](architectural-notes.md) - System architecture details
 - [functional-requirements.md](functional-requirements.md) - Feature specifications
 - [guide.md](guide.md) - Development guidelines
 - [copilot-instructions.md](.github/copilot-instructions.md) - AI assistance setup
 
 ### API Documentation
+
 - Component Props
 - State Management
 - Event Handlers
@@ -489,44 +519,46 @@ You are an experienced software architect helping a developer (using GitHub Copi
 **Project File Structure:**
 
 ```
+
 ephemera-codex/
 ├── .github/
-│   └── copilot-instructions.md
+│ └── copilot-instructions.md
 ├── .gitignore
 ├── architectural-notes.md
 ├── functional-requirements.md
 ├── fileNames.md
 ├── gemini/
-│   ├── gemini_system_prompt.md
-│   └── gregos_boot_prompt.md
+│ ├── gemini_system_prompt.md
+│ └── gregos_boot_prompt.md
 ├── package.json
 ├── public/
-│   └── index.html
+│ └── index.html
 ├── README.md
 ├── src/
-│   ├── App.js
-│   ├── components/
-│   │   ├── Dashboard.js
-│   │   ├── EthicalConsiderations/
-│   │   │   └── EthicalConsiderationsMatrix.js
-│   │   ├── GregOSBootScreen/
-│   │   │   ├── BootMessage.js
-│   │   │   ├── index.js
-│   │   │   └── LoadingIndicator.js
-│   │   ├── INT3RN4L_3RR0R_ST0RY/
-│   │   │   └── Chapter1.js
-│   │   ├── Navigation.js
-│   │   └── ProjectAmoratus/
-│   │       └── QuantumMind.js
-│   ├── services/
-│   │   └── api.js
-│   ├── index.js
-│   ├── styles.css
-│   └── utils/
-│       ├── bootSequence.js
-│       ├── constants.js
-│       ├── logger.js
-│       └── timing.js
+│ ├── App.js
+│ ├── components/
+│ │ ├── Dashboard.js
+│ │ ├── EthicalConsiderations/
+│ │ │ └── EthicalConsiderationsMatrix.js
+│ │ ├── GregOSBootScreen/
+│ │ │ ├── BootMessage.js
+│ │ │ ├── index.js
+│ │ │ └── LoadingIndicator.js
+│ │ ├── INT3RN4L_3RR0R_ST0RY/
+│ │ │ └── Chapter1.js
+│ │ ├── Navigation.js
+│ │ └── ProjectAmoratus/
+│ │ └── QuantumMind.js
+│ ├── services/
+│ │ └── api.js
+│ ├── index.js
+│ ├── styles.css
+│ └── utils/
+│ ├── bootSequence.js
+│ ├── constants.js
+│ ├── logger.js
+│ └── timing.js
+
 ```
 
 **Core Functionality Overview (Summary of FRD):**
@@ -616,4 +648,4 @@ The "Ephemera Codex" website is an interactive experience centered around a fict
 When analyzing issues, consider the project structure, architectural decisions, and best practices for maintainable code. Focus on providing clear explanations, identifying relevant files, suggesting efficient approaches that GitHub Copilot can help implement, and adhering to the constraints of the Bolt.new development environment.
 ```
 
----
+______________________________________________________________________
