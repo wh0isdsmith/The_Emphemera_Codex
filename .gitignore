@@ -1,7 +1,6 @@
 # Node Modules
 node_modules/
 
-
 # OS-Generated Files
 .DS_Store
 Thumbs.db
@@ -15,3 +14,7 @@ Thumbs.db
 *.pyo
 *.pyd
 __pycache__/
+
+guide.md
+
+package-lock.json
